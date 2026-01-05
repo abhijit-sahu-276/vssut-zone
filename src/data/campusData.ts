@@ -1,3 +1,14 @@
+// Food Images
+import bbFoodCorner from '@/assets/food/bb-food-corner.jpg';
+import swarupFastFood from '@/assets/food/swarup-fast-food.jpg';
+import dawatBurla from '@/assets/food/dawat-burla.jpg';
+import alibabaHotel from '@/assets/food/alibaba-hotel.jpg';
+import engineersBroDelight from '@/assets/food/engineers-bro-delight.jpg';
+import biriyaniVibes from '@/assets/food/biriyani-vibes.jpg';
+import luckyBiriyani from '@/assets/food/lucky-biriyani.jpg';
+import zaika from '@/assets/food/zaika.jpg';
+import chaiSuttaBar from '@/assets/food/chai-sutta-bar.jpg';
+
 export interface Review {
   id: string;
   user: string;
@@ -90,6 +101,28 @@ export const foodVendors: FoodVendor[] = [
       { id: 'r2', user: 'Sneha', rating: 5, comment: 'Cold coffee is a must try.', date: '2023-11-05', avatarColor: 'bg-pink-500' },
     ],
     rating: 4.5,
+    imageUrl: bbFoodCorner,
+  },
+  {
+    id: 'f2',
+    name: 'Swarup Fast Food',
+    phone: '+91 8270469682',
+    type: ['Fast Food'],
+    vegNonveg: 'Both',
+    avgServingMins: 10,
+    priceRange: '₹40–₹160',
+    menu: [
+      { item: 'Veg Roll', price: 50 },
+      { item: 'Egg Roll', price: 60 },
+      { item: 'Chicken Roll', price: 90 },
+      { item: 'Fried Rice', price: 90 },
+      { item: 'Chilli Chicken', price: 150 },
+    ],
+    reviews: [
+      { id: 'r3', user: 'Rahul', rating: 3, comment: 'Okayish rolls.', date: '2023-09-20', avatarColor: 'bg-amber-500' },
+    ],
+    rating: 3.0,
+    imageUrl: swarupFastFood,
   },
   {
     id: 'f2',
@@ -127,6 +160,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 4.2,
+    imageUrl: dawatBurla,
   },
   {
     id: 'f4',
@@ -144,6 +178,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 4.0,
+    imageUrl: alibabaHotel,
   },
   {
     id: 'f5',
@@ -161,6 +196,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 4.3,
+    imageUrl: engineersBroDelight,
   },
   {
     id: 'f6',
@@ -180,6 +216,7 @@ export const foodVendors: FoodVendor[] = [
       { id: 'r4', user: 'BiryaniLover', rating: 4, comment: 'Good quantity.', date: '2023-11-20', avatarColor: 'bg-violet-500' },
     ],
     rating: 4.0,
+    imageUrl: biriyaniVibes,
   },
   {
     id: 'f7',
@@ -196,6 +233,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 3.8,
+    imageUrl: luckyBiriyani,
   },
   {
     id: 'f8',
@@ -213,6 +251,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 4.1,
+    imageUrl: zaika,
   },
   {
     id: 'f9',
@@ -230,6 +269,7 @@ export const foodVendors: FoodVendor[] = [
     ],
     reviews: [],
     rating: 4.4,
+    imageUrl: chaiSuttaBar,
   },
 ];
 

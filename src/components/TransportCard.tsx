@@ -7,29 +7,19 @@ interface TransportCardProps {
 
 const TransportCard = ({ transport }: TransportCardProps) => {
   const getIcon = () => {
-    switch (transport.type) {
-      case 'Auto':
-        return <Car className="w-6 h-6" />;
-      case 'Taxi':
-        return <Car className="w-6 h-6" />;
-      case 'E-Rickshaw':
-        return <Bike className="w-6 h-6" />;
-      default:
-        return <Car className="w-6 h-6" />;
-    }
+    const type = transport.type.toLowerCase();
+    if (type.includes('auto')) return <Car className="w-6 h-6" />;
+    if (type.includes('taxi')) return <Car className="w-6 h-6" />;
+    if (type.includes('rickshaw') || type.includes('ev')) return <Bike className="w-6 h-6" />;
+    return <Car className="w-6 h-6" />;
   };
 
   const getTypeColor = () => {
-    switch (transport.type) {
-      case 'Auto':
-        return 'from-amber-500 to-orange-500';
-      case 'Taxi':
-        return 'from-indigo-500 to-violet-500';
-      case 'E-Rickshaw':
-        return 'from-emerald-500 to-teal-500';
-      default:
-        return 'from-primary to-accent';
-    }
+    const type = transport.type.toLowerCase();
+    if (type.includes('auto')) return 'from-amber-500 to-orange-500';
+    if (type.includes('taxi')) return 'from-indigo-500 to-violet-500';
+    if (type.includes('rickshaw') || type.includes('ev')) return 'from-emerald-500 to-teal-500';
+    return 'from-primary to-accent';
   };
 
   const handleCall = () => {
@@ -54,16 +44,12 @@ const TransportCard = ({ transport }: TransportCardProps) => {
       {/* Details */}
       <div className="space-y-3 mb-4">
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <MapPin className="w-4 h-4 flex-shrink-0" />
-          <span>{transport.route}</span>
-        </div>
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <IndianRupee className="w-4 h-4 flex-shrink-0" />
-          <span>{transport.fare}</span>
+          <span>{transport.price}</span>
         </div>
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <Clock className="w-4 h-4 flex-shrink-0" />
-          <span>{transport.availability}</span>
+          <span>{transport.estimatedTime}</span>
         </div>
       </div>
 

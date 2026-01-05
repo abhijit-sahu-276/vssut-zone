@@ -241,7 +241,11 @@ const Index = () => {
         count={filteredData.transports.length}
       >
         {filteredData.transports.map((transport) => (
-          <TransportCard key={transport.id} transport={transport} />
+          <TransportCard
+            key={transport.id}
+            transport={transport}
+            onReviewClick={() => handleReviewClick(transport.id, transport.name)}
+          />
         ))}
       </ContentSection>
 
@@ -254,7 +258,11 @@ const Index = () => {
         count={filteredData.places.length}
       >
         {filteredData.places.map((place) => (
-          <PlaceCard key={place.id} place={place} />
+          <PlaceCard
+            key={place.id}
+            place={place}
+            onReviewClick={() => handleReviewClick(place.id, place.name)}
+          />
         ))}
       </ContentSection>
 

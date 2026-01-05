@@ -1,11 +1,12 @@
-import { Phone, MapPin, Clock, IndianRupee, Car, Bike } from 'lucide-react';
+import { Phone, Clock, IndianRupee, Car, Bike, Star, MessageSquare } from 'lucide-react';
 import { Transport } from '@/data/campusData';
 
 interface TransportCardProps {
   transport: Transport;
+  onReviewClick?: () => void;
 }
 
-const TransportCard = ({ transport }: TransportCardProps) => {
+const TransportCard = ({ transport, onReviewClick }: TransportCardProps) => {
   const getIcon = () => {
     const type = transport.type.toLowerCase();
     if (type.includes('auto')) return <Car className="w-6 h-6" />;
@@ -36,7 +37,13 @@ const TransportCard = ({ transport }: TransportCardProps) => {
           {getIcon()}
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold text-lg">{transport.name}</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold text-lg">{transport.name}</h3>
+            <div className="flex items-center gap-1 glass px-2 py-1 rounded-full">
+              <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+              <span className="text-xs font-semibold">{transport.rating.toFixed(1)}</span>
+            </div>
+          </div>
           <span className="badge-service">{transport.type}</span>
         </div>
       </div>
@@ -52,6 +59,17 @@ const TransportCard = ({ transport }: TransportCardProps) => {
           <span>{transport.estimatedTime}</span>
         </div>
       </div>
+
+      {/* Review Button */}
+      {onReviewClick && (
+        <button
+          onClick={onReviewClick}
+          className="w-full btn-glass py-2 mb-3 flex items-center justify-center gap-2 text-sm"
+        >
+          <MessageSquare className="w-4 h-4" />
+          Reviews ({transport.reviews.length})
+        </button>
+      )}
 
       {/* Actions */}
       {transport.phone !== 'App Based' ? (

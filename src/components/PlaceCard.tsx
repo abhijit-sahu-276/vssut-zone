@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { Star, Phone, MapPin, Navigation, Camera } from 'lucide-react';
+import { Star, Phone, MapPin, Navigation, MessageSquare, Camera } from 'lucide-react';
 import { Place } from '@/data/campusData';
 
 interface PlaceCardProps {
   place: Place;
+  onReviewClick?: () => void;
 }
 
-const PlaceCard = ({ place }: PlaceCardProps) => {
+const PlaceCard = ({ place, onReviewClick }: PlaceCardProps) => {
   const [imgError, setImgError] = useState(false);
 
   const getTypeIcon = () => {
@@ -74,16 +75,38 @@ const PlaceCard = ({ place }: PlaceCardProps) => {
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="font-semibold text-lg mb-2">{place.name}</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-semibold text-lg">{place.name}</h3>
+          {onReviewClick && (
+            <button
+              onClick={onReviewClick}
+              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>{place.reviews.length}</span>
+            </button>
+          )}
+        </div>
         
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
           <MapPin className="w-4 h-4" />
-          <span>{place.distance} from campus</span>
+          <span>{place.distance || 'Nearby'} from campus</span>
         </div>
 
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
           {place.notes}
         </p>
+
+        {/* Review Button with Photo indicator */}
+        {onReviewClick && (
+          <button
+            onClick={onReviewClick}
+            className="w-full btn-glass py-2 mb-3 flex items-center justify-center gap-2 text-sm"
+          >
+            <Camera className="w-4 h-4" />
+            Add Review with Photo
+          </button>
+        )}
 
         {/* Actions */}
         <div className="flex gap-2">

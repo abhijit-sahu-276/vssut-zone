@@ -119,8 +119,7 @@ const Index = () => {
       ),
       transports: transports.filter((t) =>
         t.name.toLowerCase().includes(query) ||
-        t.type.toLowerCase().includes(query) ||
-        t.route.toLowerCase().includes(query)
+        t.type.toLowerCase().includes(query)
       ),
       places: places.filter((p) =>
         p.name.toLowerCase().includes(query) ||

@@ -145,6 +145,15 @@ const ContentCard = ({
           )}
         </div>
 
+        {/* Review Button */}
+        <button
+          onClick={onReviewClick}
+          className="w-full btn-glass py-2 mb-3 flex items-center justify-center gap-2 text-sm"
+        >
+          <MessageSquare className="w-4 h-4" />
+          Add Review
+        </button>
+
         {/* Actions */}
         <div className="flex gap-2">
           {phone && phone !== 'App Based' && (

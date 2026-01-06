@@ -60,19 +60,6 @@ const Hero = ({ searchQuery, onSearchChange, onChatbotOpen }: HeroProps) => {
           Everything you need, just a tap away.
         </p>
 
-        {/* Search Bar */}
-        <div className="max-w-2xl mx-auto mb-10 animate-slide-up">
-          <div className="relative">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search for food, services, places..."
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              className="search-input pl-14"
-            />
-          </div>
-        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up">

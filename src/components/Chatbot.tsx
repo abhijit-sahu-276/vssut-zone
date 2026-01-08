@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 interface Message {
   id: string;
@@ -24,6 +25,25 @@ const Chatbot = ({ isOpen, onToggle }: ChatbotProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Initialize Gemini AI
+  const genAI = useMemo(() => {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      console.warn('⚠️ Gemini API key not found. Using fallback responses.');
+      console.log('💡 Make sure you have a .env file with VITE_GEMINI_API_KEY=your_key');
+      return null;
+    }
+    console.log('✅ Gemini API key found! API is ready to use.');
+    return new GoogleGenerativeAI(apiKey);
+  }, []);
+
+  const model = useMemo(() => {
+    if (!genAI) return null;
+    const geminiModel = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    console.log('🤖 Gemini model initialized:', 'gemini-pro');
+    return geminiModel;
+  }, [genAI]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -32,7 +52,8 @@ const Chatbot = ({ isOpen, onToggle }: ChatbotProps) => {
     scrollToBottom();
   }, [messages]);
 
-  const getAIResponse = (userMessage: string): string => {
+  // Fallback response function (used when API key is not available)
+  const getFallbackResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase();
     
     if (lowerMessage.includes('food') || lowerMessage.includes('eat') || lowerMessage.includes('restaurant')) {
@@ -73,19 +94,83 @@ const Chatbot = ({ isOpen, onToggle }: ChatbotProps) => {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input.trim();
     setInput('');
     setIsLoading(true);
 
-    // Simulate AI response delay
-    setTimeout(() => {
+    try {
+      let aiResponseContent: string;
+
+      if (model) {
+        // Use Gemini API
+        console.log('🚀 Sending message to Gemini API...');
+        const systemPrompt = `You are Campus AI, a helpful assistant for VSSUT (Veer Surendra Sai University of Technology) Burla campus. 
+You help students with information about:
+- Food places and restaurants near campus
+- Transport options (autos, taxis, e-rickshaws)
+- Places to visit (Hirakud Dam, temples, etc.)
+- Services (xerox, mobile repair, etc.)
+- Salons and other amenities
+
+Be friendly, concise, and helpful. Use emojis appropriately. If asked about something outside your knowledge, politely redirect to campus-related topics.`;
+
+        // Build conversation history for context
+        const conversationHistory = messages
+          .filter((msg) => msg.id !== '1') // Exclude initial greeting
+          .map((msg) => ({
+            role: msg.role === 'user' ? 'user' : 'model',
+            parts: [{ text: msg.content }],
+          }));
+
+        const chat = model.startChat({
+          history: [
+            {
+              role: 'user',
+              parts: [{ text: systemPrompt }],
+            },
+            {
+              role: 'model',
+              parts: [{ text: "Hi! I'm Campus AI, your VSSUT companion. Ask me about food, services, transport, or places near campus! 🎓" }],
+            },
+            ...conversationHistory,
+          ],
+        });
+
+        const result = await chat.sendMessage(currentInput);
+        const response = await result.response;
+        aiResponseContent = response.text();
+        console.log('✅ Gemini API response received successfully!');
+      } else {
+        // Fallback to rule-based responses
+        console.log('⚠️ Using fallback responses (Gemini API not available)');
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        aiResponseContent = getFallbackResponse(currentInput);
+      }
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: getAIResponse(userMessage.content),
+        content: aiResponseContent,
       };
       setMessages((prev) => [...prev, aiResponse]);
+    } catch (error) {
+      console.error('❌ Error getting AI response from Gemini:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        if (error.message.includes('API_KEY')) {
+          console.error('🔑 API Key Error: Check if your API key is valid and has proper permissions.');
+        }
+      }
+      // Fallback response on error
+      const aiResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: getFallbackResponse(currentInput) + '\n\n(Note: AI service temporarily unavailable. Using fallback responses.)',
+      };
+      setMessages((prev) => [...prev, aiResponse]);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (

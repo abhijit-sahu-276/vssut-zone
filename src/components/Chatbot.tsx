@@ -70,7 +70,6 @@ const Chatbot = ({ isOpen, onToggle }: ChatbotProps) => {
     
     if (lowerMessage.includes('service') || lowerMessage.includes('xerox') || lowerMessage.includes('print')) {
       return "🛠️ Services near campus:\n\n• **Campus Xerox Shop** - ₹1/page B&W, 200m from gate\n• **Quick Stationery** - Inside campus\n• **Raju Mobile Repair** - 500m from campus\n• **Cycle Repair Point** - 100m from hostel\n\nXerox center is closest for printouts!";
-    };
     }
     
     if (lowerMessage.includes('salon') || lowerMessage.includes('haircut') || lowerMessage.includes('hair')) {

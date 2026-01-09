@@ -288,7 +288,7 @@ export const services: Service[] = [
       { id: 'sr1', user: 'Student1', rating: 5, comment: 'Very fast service.', date: '2024-01-15', avatarColor: 'bg-emerald-500' },
     ],
     rating: 5.0,
-    imageUrl: 'https://images.ctfassets.net/ao073xfdpkqn/3AKA46IvVeUBzDF8Fhe2zP/2a095bd08340bfed75c982a0eb83f59f/Teaser-Phaser-969x686.jpg'
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJZpR6-poztg_bLVRz0Go3cyTv0e1prEM96w&s'
   },
   {
     id: 's2',

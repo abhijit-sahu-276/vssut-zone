@@ -311,7 +311,7 @@ export const services: Service[] = [
     distance: '0.2km from Campus',
     reviews: [],
     rating: 4.0,
-    imageUrl: 'https://content.jdmagicbox.com/v2/comp/hyderabad/l8/040pxx40.xx40.130617143412.j5l8/catalogue/mind-space-systems-madhapur-hyderabad-laptop-repair-and-services-toshiba-n1bpmff21z.jpg'
+    imageUrl: 'https://i.ndtvimg.com/i/2017-05/sbi-board-with-new-logo-650_650x400_51494212001.jpg?downsize=545:307'
   },
    {
     id: 's4',

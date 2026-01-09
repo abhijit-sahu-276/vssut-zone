@@ -57,7 +57,7 @@ const Chatbot = ({ isOpen, onToggle }: ChatbotProps) => {
     const lowerMessage = userMessage.toLowerCase();
     
     if (lowerMessage.includes('food') || lowerMessage.includes('eat') || lowerMessage.includes('restaurant')) {
-      return "🍔 For food near VSSUT, I recommend:\n\n• **Dawat Burla** - Great thalis (₹120-250)\n• **Engineers' Bro Delight** - Authentic Odia food\n• **Friends Fast Food** - Best biryani near campus\n• **Night Canteen** - Late night snack\n\nCheck the Food section for more options!";
+      return "🍔 For food near VSSUT, I recommend:\n\n• **Dawat Burla** - Great thalis (₹120-250)\n• **Engineers' Bro Delight** - Authentic Odia food\n• **Friends Fast Food** - Best biryani near campus\n• **Night Canteen** - Late night snacks\n\nCheck the Food section for more options!";
     }
     
     if (lowerMessage.includes('transport') || lowerMessage.includes('auto') || lowerMessage.includes('taxi')) {

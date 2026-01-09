@@ -360,6 +360,7 @@ export const places: Place[] = [
     notes: 'Nearest major hospital for students',
     rating: 4.2,
     reviews: [],
+    imageUrl: 'https://www.yashodahospital.org/assets/images/emergency-photo.webp'
   },
   {
     id: 'p4',
@@ -370,6 +371,7 @@ export const places: Place[] = [
     notes: 'Main rail connectivity for Sambalpur region',
     rating: 4.0,
     reviews: [],
+    imageUrl: 'https://www.orissapost.com/wp-content/uploads/2019/09/Sambalpur-best-performing-railway-division-in-country-750x375.jpg'
   },
   {
     id: 'p5',
@@ -380,6 +382,7 @@ export const places: Place[] = [
     notes: 'Major Shakti Peetha of Sambalpur',
     rating: 4.8,
     reviews: [],
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7u6zZD1u332MgRN8lOcfOZPfo3g6cCegyPQ&s%27'
   },
   {
     id: 'p6',
@@ -390,6 +393,7 @@ export const places: Place[] = [
     notes: 'Leaning Temple of Odisha',
     rating: 4.6,
     reviews: [],
+    imageUrl: 'https://tripxl.com/blog/wp-content/uploads/2024/09/Location-42.jpg'
   },
 ];
 

@@ -126,12 +126,12 @@ export const foodVendors: FoodVendor[] = [
   },
   {
     id: 'f2',
-    name: 'Swarup Fast Food',
+    name: 'Friends Fast Food',
     phone: '+91 8270469682',
     type: ['Fast Food'],
     vegNonveg: 'Both',
     avgServingMins: 10,
-    priceRange: '₹40–₹160',
+    priceRange: '₹30–₹150',
     menu: [
       { item: 'Veg Roll', price: 50 },
       { item: 'Egg Roll', price: 60 },
@@ -143,6 +143,7 @@ export const foodVendors: FoodVendor[] = [
       { id: 'r3', user: 'Rahul', rating: 3, comment: 'Okayish rolls.', date: '2023-09-20', avatarColor: 'bg-amber-500' },
     ],
     rating: 3.0,
+    imageUrl: 'https://images.getrecipekit.com/20220904015448-veg-20fried-20rice.png?aspect_ratio=16:9&quality=90&'
   },
   {
     id: 'f3',
@@ -287,6 +288,7 @@ export const services: Service[] = [
       { id: 'sr1', user: 'Student1', rating: 5, comment: 'Very fast service.', date: '2024-01-15', avatarColor: 'bg-emerald-500' },
     ],
     rating: 5.0,
+    imageUrl: 'https://images.ctfassets.net/ao073xfdpkqn/3AKA46IvVeUBzDF8Fhe2zP/2a095bd08340bfed75c982a0eb83f59f/Teaser-Phaser-969x686.jpg'
   },
   {
     id: 's2',
@@ -298,6 +300,30 @@ export const services: Service[] = [
     price: 'Varies',
     reviews: [],
     rating: 4.0,
+    imageUrl: 'https://content.jdmagicbox.com/v2/comp/hyderabad/l8/040pxx40.xx40.130617143412.j5l8/catalogue/mind-space-systems-madhapur-hyderabad-laptop-repair-and-services-toshiba-n1bpmff21z.jpg'
+  },
+   {
+    id: 's3',
+    name: 'SBI ATM',
+    type: 'Services',
+    phone: '+91 ',
+    estimatedTime: '5 min',
+    distance: '0.2km from Campus',
+    reviews: [],
+    rating: 4.0,
+    imageUrl: 'https://content.jdmagicbox.com/v2/comp/hyderabad/l8/040pxx40.xx40.130617143412.j5l8/catalogue/mind-space-systems-madhapur-hyderabad-laptop-repair-and-services-toshiba-n1bpmff21z.jpg'
+  },
+   {
+    id: 's4',
+    name: 'Campus Electrical Shop',
+    type: 'Machinery Repair',
+    phone: '+91 9348017676',
+    estimatedTime: '5–10 mins',
+    distance: '1km from Campus',
+    price: '₹50-₹1000',
+    reviews: [],
+    rating: 4.6,
+    imageUrl: 'https://www.bizkl.com/galleryimgs/1_shop2870.jpg'
   },
 ];
 
@@ -409,6 +435,7 @@ export const salons: Service[] = [
     price: '₹100+',
     reviews: [],
     rating: 4.2,
+    imageUrl: 'https://im.whatshot.in/img/2021/Aug/istock-872361244-cropped-1624514729-1626177802-1629879745.jpg'
   },
   {
     id: 'salon2',
@@ -422,5 +449,6 @@ export const salons: Service[] = [
       { id: 'salr1', user: 'Neha', rating: 5, comment: 'Professional staff.', date: '2024-01-20', avatarColor: 'bg-pink-500' },
     ],
     rating: 5.0,
+    imageUrl: 'https://media.istockphoto.com/id/827536320/photo/hairdresser-washing-womans-hair-in-hairdresser-salon.jpg?s=612x612&w=0&k=20&c=u85RRwuvK6Hb6JPY2UPwQMZR-Pvk8Mcmf-DqaoApWkY='
   },
 ];
